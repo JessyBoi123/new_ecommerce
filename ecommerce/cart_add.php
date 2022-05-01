@@ -14,6 +14,7 @@
 		$row = $stmt->fetch();
 		if($row['numrows'] < 1){
 			try{
+				
 				$stmt = $conn->prepare("INSERT INTO cart (user_id, product_id, quantity) VALUES (:user_id, :product_id, :quantity)");
 				$stmt->execute(['user_id'=>$user['id'], 'product_id'=>$id, 'quantity'=>$quantity]);
 				$output['message'] = 'Item added to cart';

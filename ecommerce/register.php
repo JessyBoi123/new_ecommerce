@@ -49,8 +49,9 @@
 						<a href='http://localhost/ecommerce/activate.php?code=".$code."&user=".$userid."'>Activate Account</a>
 					";
 
+					
 					$_SESSION['success'] = 'Account created';
-					header('location: signup.php');
+					header('location: login.php');
 
 				}
 				catch(PDOException $e){

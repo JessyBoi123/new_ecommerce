@@ -31,9 +31,16 @@
 	        		</div>
 	        		<?php
 	        			if(isset($_SESSION['user'])){
-	        				echo "
-	        					<div id='paypal-button'></div>
+
+
+	        				// echo "
+	        				// 	<div id='paypal-button'></div>
+	        				// ";
+
+							echo "
+	        				  <a href='#Checkout' data-toggle='modal' class='btn btn-primary btn-sm btn-flat'>Checkout</a>
 	        				";
+
 	        			}
 	        			else{
 	        				echo "
@@ -53,6 +60,60 @@
   	<?php $pdo->close(); ?>
   	<?php include 'includes/footer.php'; ?>
 </div>
+
+
+<div class="modal fade" id="Checkout">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title"><b>Checkout</b></h4>
+            </div>
+            <div class="modal-body">
+              <form class="form-horizontal" method="POST" action="cart_checkout.php">
+                <input type="hidden" class="userid" name="id">
+                <div class="form-group">
+                    <label for="product" class="col-sm-3 control-label">Payment Method</label>
+
+                    <div class="col-sm-9">
+                      <select class="form-control select2" style="width: 100%;" name="paymentmethod" id="PaymentMethodDLL" required>
+                        <option value="COD" selected>COD</option>
+						<option value="GCASH">GCASH</option>
+						<option value="Bank">Bank</option>
+                      </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <label for="Email" class="col-sm-3 control-label">Email</label>
+
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="Email" name="Email" required>
+                    </div>
+
+                </div>
+
+				<div class="form-group">
+				
+					<label for="ContactNumber" class="col-sm-3 control-label">Contact Number</label>
+
+					<div class="col-sm-9">
+	 					 <input type="text" class="form-control" id="ContactNumber" name="Contact Number" required>
+					</div>
+				</div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+              <button type="submit" class="btn btn-primary btn-flat" name="saveCart"><i class="fa fa-save"></i> Save</button>
+              </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <?php include 'includes/scripts.php'; ?>
 <script>
@@ -194,6 +255,10 @@ paypal.Button.render({
     },
 
 }, '#paypal-button');
+
+
+
+
 </script>
 </body>
 </html>

@@ -9,8 +9,8 @@
 
 		try{
 			
-			$stmt = $conn->prepare("INSERT INTO sales (user_id, pay_id, sales_date) VALUES (:user_id, :pay_id, :sales_date)");
-			$stmt->execute(['user_id'=>$user['id'], 'pay_id'=>$payid, 'sales_date'=>$date]);
+			$stmt = $conn->prepare("INSERT INTO sales (user_id,  sales_date) VALUES (:user_id, :sales_date)");
+			$stmt->execute(['user_id'=>$user['id'] ,'sales_date'=>$date]);
 			$salesid = $conn->lastInsertId();
 			
 			try{
