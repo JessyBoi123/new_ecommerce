@@ -26,7 +26,7 @@
           <div class="box">
             <div class="box-header with-border">
               <div class="pull-right">
-                <form method="POST" class="form-inline" action="sales_print.php">
+                <!-- <form method="POST" class="form-inline" action="sales_print.php">
                   <div class="input-group">
                     <div class="input-group-addon">
                       <i class="fa fa-calendar"></i>
@@ -34,7 +34,7 @@
                     <input type="text" class="form-control pull-right col-sm-8" id="reservation" name="date_range">
                   </div>
                   <button type="submit" class="btn btn-success btn-sm btn-flat" name="print"><span class="glyphicon glyphicon-print"></span> Print</button>
-                </form>
+                </form> -->
               </div>
             </div>
             <div class="box-body">
@@ -44,6 +44,7 @@
                   <th>Date</th>
                   <th>Buyer Name</th>
                   <th>Payment Method</th>
+                  <th>Status</th>
                   <th>Amount</th>
                   <th>Full Details</th>
                 </thead>
@@ -68,8 +69,12 @@
                             <td>".date('M d, Y', strtotime($row['sales_date']))."</td>
                             <td>".$row['firstname'].' '.$row['lastname']."</td>
                             <td>".$row['PaymentMethod']."</td>
+                            <td>".$row['OrderStatus']."</td>
                             <td>PHP ".number_format($total, 2)."</td>
-                            <td><button type='button' class='btn btn-info btn-sm btn-flat transact' data-id='".$row['salesid']."'><i class='fa fa-search'></i> View</button></td>
+                            <td><button type='button' class='btn btn-info btn-sm btn-flat transact' data-id='".$row['salesid']."'><i class='fa fa-search'></i> View</button>
+                            <button class='btn btn-success btn-sm edit btn-flat changestatus' data-id='".$row['salesid']."'><i class='fa fa-edit'></i> Change Status</button>
+                            </td>
+                          
                           </tr>
                         ";
                       }
@@ -140,7 +145,11 @@ $(function(){
 });
 </script>
 <script>
+
+  
 $(function(){
+
+
   $(document).on('click', '.transact', function(e){
     e.preventDefault();
     $('#transaction').modal('show');
@@ -158,6 +167,28 @@ $(function(){
       }
     });
   });
+
+
+  $(document).on('click', '.changestatus', function(e){
+    e.preventDefault();
+    $('#statusChange').modal('show');
+    var id = $(this).data('id');
+    $.ajax({
+      type: 'POST',
+      url: 'transact.php',
+      data: {id:id},
+      dataType: 'json',
+      success:function(response){
+        $('#date').html(response.date);
+        $('#transid').html(response.transaction);
+
+
+      }
+    });
+  });
+
+  
+
 
   $("#transaction").on("hidden.bs.modal", function () {
       $('.prepend_items').remove();

@@ -53,7 +53,7 @@
 			$output .= "
 				<tr>
 					<td colspan='5' align='right'><b>Total</b></td>
-					<td><b>PHP ".number_format($total, 2)."</b></td>
+					<td><b class='totalcart'>PHP ".number_format($total, 2)."</b></td>
 				<tr>
 			";
 

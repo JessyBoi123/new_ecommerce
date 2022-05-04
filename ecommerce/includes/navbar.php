@@ -12,7 +12,7 @@
       <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
         <ul class="nav navbar-nav">
           <li><a href="index.php">HOME</a></li>
-          <li><a href="">ABOUT US</a></li>
+          <li><a href="aboutus.php">ABOUT US</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">CATEGORY <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
@@ -77,7 +77,7 @@
                   </a>
                   <ul class="dropdown-menu">
                     <!-- User image -->
-                    <li class="user-header">
+                    <li class="user-header" style="background-color: #a77620f2">
                       <img src="'.$image.'" class="img-circle" alt="User Image">
 
                       <p>
