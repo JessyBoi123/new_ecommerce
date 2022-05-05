@@ -1,8 +1,8 @@
 <header class="main-header">
-  <nav class="navbar navbar-static-top" style="background-color: #a77620f2">
+  <nav class="navbar navbar-static-top" style="background-color: #24363E;">
     <div class="container">
       <div class="navbar-header">
-        <div href="index.php" class="navbar-brand  p-0" style="height: 55px"> <img href="index.php" class="pb-1" style="max-width:100%; max-height:100%" src="images/Logo4.png" ></div>
+        <div href="index.php" class="navbar-brand  p-0" style="height: 52px"> <img href="index.php" class="pb-1" style="max-width:100%; max-height:100%" src="images/Logo4.png" ></div>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
           <i class="fa fa-bars"></i>
         </button>
@@ -11,10 +11,10 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
         <ul class="nav navbar-nav">
-          <li><a href="index.php">HOME</a></li>
-          <li><a href="aboutus.php">ABOUT US</a></li>
+          <li><a href="index.php">Home</a></li>
+          <li><a href="aboutus.php">About Us</a></li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">CATEGORY <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Category <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               <?php
              
@@ -38,14 +38,6 @@
             </ul>
           </li>
         </ul>
-        <form method="POST" class="navbar-form navbar-left" action="search.php">
-          <div class="input-group">
-              <input type="text" class="form-control" id="navbar-search-input" name="keyword" placeholder="Search for Product" required>
-              <!-- <span class="input-group-btn" id="searchBtn" style="display:none;">
-                  <button type="submit" class="btn btn-default btn-flat"><i class="fa fa-search"></i> </button>
-              </span> -->
-          </div>
-        </form>
       </div>
       <!-- /.navbar-collapse -->
       <!-- Navbar Right Menu -->
@@ -99,8 +91,8 @@
             }
             else{
               echo "
-                <li><a href='login.php'>LOGIN</a></li>
-                <li><a href='signup.php'>SIGNUP</a></li>
+                <li><a href='login.php'>Login</a></li>
+                <li><a href='signup.php'>Sign Up</a></li>
               ";
             }
           ?>

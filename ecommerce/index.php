@@ -8,10 +8,27 @@
 	  <div class="content-wrapper">
 	    <div class="container">
 
+
 	      <!-- Main content -->
 	      <section class="content">
-	        <div class="row">
-	        	<div class="col-sm-9">
+	        <div class="container">
+	        	<div class="col-sm-12">
+					<div class="text-center">
+						<img src="images/Logo4.png" alt="Rice Next Door Logo">
+						<p>We specialize in selling quality products.</p> 
+
+							<form method="POST" class="" action="search.php">
+								<div class="form-group">
+									<input type="text" class="form-control " name="keyword" placeholder="Search for Product" required>
+									<small class="form-text text-muted">If you remember keywords, type here.</small>
+								</div>
+							</form>
+      				</div>
+				</div>
+			</div>
+			
+		</div>
+			
 
 
 	        		<?php
@@ -24,20 +41,20 @@
 	        				unset($_SESSION['error']);
 	        			}
 	        		?>
-	        		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+	        		<div id="carousel-example-generic" class="carousel slide container" data-ride="carousel">
 		                <ol class="carousel-indicators">
 		                  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 		                  <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
 		                  <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
 		                </ol>
 		                <div class="carousel-inner">
-		                  <div class="item active" style="max-height: 200px">
+		                  <div class="item active" style="max-height: 300px">
 		                    <img src="images/banner_1.jpg" alt="First slide">
 		                  </div>
-		                  <div class="item" style="max-height: 200px">
+		                  <div class="item" style="max-height: 300px">
 		                    <img src="images/banner_2.jpg" alt="Second slide">
 		                  </div>
-		                  <div class="item" style="max-height: 200px">
+		                  <div class="item" style="max-height: 300px">
 		                    <img src="images/banner_3.jpg" alt="Third slide">
 		                  </div>
 		                </div>
@@ -48,6 +65,7 @@
 		                  <span class="fa fa-angle-right"></span>
 		                </a>
 		            </div>
+					<div class="container">
 		            <h2>Monthly Top Sellers</h2>
 		       		<?php
 		       			$month = date('m');
@@ -86,6 +104,7 @@
 						$pdo->close();
 
 		       		?> 
+					</div>
 	        	</div>
 	        	<div class="col-sm-3">
 	        		<?php include 'includes/sidebar.php'; ?>
