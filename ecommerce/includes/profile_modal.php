@@ -7,33 +7,44 @@
           <span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title"><b>Transaction Details</b></h4>
       </div>
-      <div class="modal-body">
-      <form class="form-horizontal" method="POST" action="profile_update.php">
+      <form class="form-horizontal" method="POST" action="sales_status_update.php">
 
-      <p>
-          Date: <span id="date"></span>
-          <span class="pull-right">Transaction#: <span name="transid" id="transid"></span></span>
-        </p>
+        <div class="modal-body">
+          <p>
+            Date: <span id="date"></span>
+            <span class="pull-right">Transaction#: <span id="transid"></span></span>
+          </p>
 
-        <div class="form-group">
-          <label for="email" class="col-sm-3 control-label">Status</label>
+          <div class="form-group" style="display: none;">
 
-          <div class="col-sm-9">
-            <select class="form-control select2" style="width: 100%;" name="orderstatus" id="orderstatusddl" required>
-               <option disabled selected></option>
-              <option value="Pending" >Pending</option>
-              <option value="OnGoing">OnGoing</option>
-              <option value="Complete">Complete</option>
-            </select>
+            <label for="orderstatus" class="col-sm-3 control-label">transactionID</label>
+
+            <div class="col-sm-9">
+              <input type="text" class="form-control transid" name="transid" required>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="orderstatus" class="col-sm-3 control-label">Status</label>
+
+            <div class="col-sm-9">
+              <select class="form-control select2" style="width: 100%;" name="orderstatus" id="orderstatus" required>
+                <option disabled selected></option>
+                <option value="Pending">Pending</option>
+                <option value="OnGoing">OnGoing</option>
+                <option value="Complete">Complete</option>
+              </select>
+            </div>
           </div>
         </div>
-      </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+          <button type="submit" class="btn btn-success btn-flat" name="saveStatus"><i class="fa fa-check-square-o"></i>Save</button>
+        </div>
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-        <button type="submit" class="btn btn-success btn-flat" name="saveStatus"><i class="fa fa-check-square-o"></i>Save</button>
-      </div>
+      </form>
     </div>
   </div>
 </div>

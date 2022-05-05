@@ -181,8 +181,8 @@ $(function(){
       success:function(response){
         $('#date').html(response.date);
         $('#transid').html(response.transaction);
-
-
+        $('.transid').val(response.transaction);
+        
       }
     });
   });

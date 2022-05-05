@@ -2,7 +2,7 @@
   <nav class="navbar navbar-static-top" style="background-color: #a77620f2">
     <div class="container">
       <div class="navbar-header">
-        <div href="index.php" class="navbar-brand  p-0" style="height: 55px"> <img class="pb-1" style="max-width:100%; max-height:100%" src="images/Logo4.png" ></div>
+        <div href="index.php" class="navbar-brand  p-0" style="height: 55px"> <img href="index.php" class="pb-1" style="max-width:100%; max-height:100%" src="images/Logo4.png" ></div>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
           <i class="fa fa-bars"></i>
         </button>

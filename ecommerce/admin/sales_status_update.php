@@ -2,18 +2,16 @@
 	include 'includes/session.php';
 
 	if(isset($_POST['saveStatus'])){
-		$id = $_POST['id'];
+
+		$id = $_POST['transid'];
 		$orderstatus = $_POST['orderstatus'];
-
 		$conn = $pdo->open();
-		$stmt = $conn->prepare("SELECT * FROM users WHERE id=:id");
-		$stmt->execute(['id'=>$id]);
-		$row = $stmt->fetch();
-	
-		try{
+        
+		try
+        {
 
-			$stmt = $conn->prepare("UPDATE users SET email=:email, password=:password, firstname=:firstname, lastname=:lastname, address=:address, contact_info=:contact WHERE id=:id");
-			$stmt->execute(['email'=>$email, 'password'=>$password, 'firstname'=>$firstname, 'lastname'=>$lastname, 'address'=>$address, 'contact'=>$contact, 'id'=>$id]);
+			$stmt = $conn->prepare("UPDATE sales SET OrderStatus=:OrderStatus WHERE id=:id");
+			$stmt->execute(['OrderStatus'=>$orderstatus, 'id'=>$id]);
 
 		}
 		catch(PDOException $e){
