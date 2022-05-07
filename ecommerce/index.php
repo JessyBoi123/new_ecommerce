@@ -71,7 +71,7 @@
 		       			$conn = $pdo->open();
 
 		       			try{
-		       			 	$inc = 3;	
+		       			 	$inc = 4;	
 						    $stmt = $conn->prepare("SELECT *, SUM(quantity) AS total_qty FROM details LEFT JOIN sales ON sales.id=details.sales_id LEFT JOIN products ON products.id=details.product_id WHERE MONTH(sales_date) = '$month' GROUP BY details.product_id ORDER BY total_qty DESC LIMIT 6");
 						    $stmt->execute();
 						    foreach ($stmt as $row) {
@@ -79,10 +79,10 @@
 						    	$inc = ($inc == 3) ? 1 : $inc + 1;
 	       						if($inc == 1) echo "<div class='row'>";
 	       						echo "
-	       							<div class='col-sm-4'>
-	       								<div class='box box-solid'>
+	       							<div class='col-sm-3'>
+	       								<div class='box box-solid round'>
 		       								<div class='box-body prod-body'>
-		       									<img src='".$image."' width='100%' height='230px' class='thumbnail'>
+		       									<img src='".$image."' width='100%' height='250px' class='thumbnail'>
 		       									<h5><a href='product.php?product=".$row['slug']."'>".$row['name']."</a></h5>
 		       								</div>
 		       								<div class='box-footer'>
