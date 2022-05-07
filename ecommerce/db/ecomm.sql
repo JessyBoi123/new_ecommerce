@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2020 at 08:52 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.30
+-- Generation Time: May 07, 2022 at 03:44 AM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 8.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,15 +34,6 @@ CREATE TABLE `cart` (
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`id`, `user_id`, `product_id`, `quantity`) VALUES
-(1, 9, 1, 4),
-(3, 9, 4, 6),
-(4, 9, 12, 2);
-
 -- --------------------------------------------------------
 
 --
@@ -60,9 +51,11 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `name`, `cat_slug`) VALUES
-(1, 'Laptops', 'laptops'),
-(2, 'Desktop PC', 'desktop-pc'),
-(3, 'Tablets', 'tablets');
+(1, 'White Rice', 'white_rice'),
+(2, 'Black Rice', 'black_rice'),
+(3, 'Brown Rice', 'brown_rice'),
+(4, 'Red Rice', 'red_rice'),
+(5, 'Special Rice and Substitution Rice', 'special_rice_substitution_rice');
 
 -- --------------------------------------------------------
 
@@ -82,13 +75,19 @@ CREATE TABLE `details` (
 --
 
 INSERT INTO `details` (`id`, `sales_id`, `product_id`, `quantity`) VALUES
-(14, 9, 11, 2),
-(15, 9, 13, 5),
-(16, 9, 3, 2),
-(17, 9, 1, 3),
-(18, 10, 13, 3),
-(19, 10, 2, 4),
-(20, 10, 19, 5);
+(36, 29, 32, 2),
+(37, 30, 29, 2),
+(38, 31, 32, 1),
+(39, 32, 43, 1),
+(40, 33, 32, 1),
+(41, 34, 32, 1),
+(42, 35, 32, 1),
+(43, 37, 32, 1),
+(44, 38, 39, 4),
+(45, 39, 32, 4),
+(46, 40, 39, 1),
+(47, 40, 44, 1),
+(48, 41, 39, 1);
 
 -- --------------------------------------------------------
 
@@ -113,26 +112,30 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `category_id`, `name`, `description`, `slug`, `price`, `photo`, `date_view`, `counter`) VALUES
-(1, 1, 'DELL Inspiron 15 7000 15.6', '<p>15-inch laptop ideal for gamers. Featuring the latest Intel&reg; processors for superior gaming performance, and life-like NVIDIA&reg; GeForce&reg; graphics and an advanced thermal cooling design.</p>\r\n', 'dell-inspiron-15-7000-15-6', 899, 'dell-inspiron-15-7000-15-6.jpg', '2018-05-12', 1),
-(2, 1, 'MICROSOFT Surface Pro 4 & Typecover - 128 GB', '<p>Surface Pro 4 powers through everything you need to do, while being lighter than ever before</p>\r\n\r\n<p>The 12.3 PixelSense screen has extremely high contrast and low glare so you can work through the day without straining your eyes</p>\r\n\r\n<p>keyboard is not included and needed to be purchased separately</p>\r\n\r\n<p>Features an Intel Core i5 6th Gen (Skylake) Core,Wireless: 802.11ac Wi-Fi wireless networking; IEEE 802.11a/b/g/n compatible Bluetooth 4.0 wireless technology</p>\r\n\r\n<p>Ships in Consumer packaging.</p>\r\n', 'microsoft-surface-pro-4-typecover-128-gb', 799, 'microsoft-surface-pro-4-typecover-128-gb.jpg', '2018-05-10', 3),
-(3, 1, 'DELL Inspiron 15 5000 15.6', '<p>Dell&#39;s 15.6-inch, midrange notebook is a bland, chunky block. It has long been the case that the Inspiron lineup lacks any sort of aesthetic muse, and the Inspiron 15 5000 follows this trend. It&#39;s a plastic, silver slab bearing Dell&#39;s logo in a mirror sheen.</p>\r\n\r\n<p>Lifting the lid reveals the 15.6-inch, 1080p screen surrounded by an almost offensively thick bezel and a plastic deck with a faux brushed-metal look. There&#39;s a fingerprint reader on the power button, and the keyboard is a black collection of island-style keys.</p>\r\n', 'dell-inspiron-15-5000-15-6', 599, 'dell-inspiron-15-5000-15-6.jpg', '2018-05-12', 1),
-(4, 1, 'LENOVO Ideapad 320s-14IKB 14\" Laptop - Grey', '<p>- Made for portability with a slim, lightweight chassis design&nbsp;<br />\r\n<br />\r\n- Powerful processing helps you create and produce on the go&nbsp;<br />\r\n<br />\r\n- Full HD screen ensures crisp visuals for movies, web pages, photos and more&nbsp;<br />\r\n<br />\r\n- Enjoy warm, sparkling sound courtesy of two Harman speakers and Dolby Audio&nbsp;<br />\r\n<br />\r\n- Fast data transfer and high-quality video connection with USB-C and HDMI ports&nbsp;<br />\r\n<br />\r\nThe Lenovo&nbsp;<strong>IdeaPad 320s-14IKB 14&quot; Laptop</strong>&nbsp;is part of our Achieve range, which has the latest tech to help you develop your ideas and work at your best. It&#39;s great for editing complex documents, business use, editing photos, and anything else you do throughout the day.</p>\r\n', 'lenovo-ideapad-320s-14ikb-14-laptop-grey', 399, 'lenovo-ideapad-320s-14ikb-14-laptop-grey.jpg', '2018-05-10', 3),
-(5, 3, 'APPLE 9.7\" iPad - 32 GB, Gold', '<p>9.7 inch Retina Display, 2048 x 1536 Resolution, Wide Color and True Tone Display</p>\r\n\r\n<p>Apple iOS 9, A9X chip with 64bit architecture, M9 coprocessor</p>\r\n\r\n<p>12 MP iSight Camera, True Tone Flash, Panorama (up to 63MP), Four-Speaker Audio</p>\r\n\r\n<p>Up to 10 Hours of Battery Life</p>\r\n\r\n<p>iPad Pro Supports Apple Smart Keyboard and Apple Pencil</p>\r\n', 'apple-9-7-ipad-32-gb-gold', 339, 'apple-9-7-ipad-32-gb-gold.jpg', '2018-05-10', 3),
-(6, 1, 'DELL Inspiron 15 5000 15', '<p>15-inch laptop delivering an exceptional viewing experience, a head-turning finish and an array of options designed to elevate your entertainment, wherever you go.</p>\r\n', 'dell-inspiron-15-5000-15', 449.99, 'dell-inspiron-15-5000-15.jpg', '0000-00-00', 0),
-(7, 3, 'APPLE 10.5\" iPad Pro - 64 GB, Space Grey (2017)', '<p>4K video recording at 30 fps</p>\r\n\r\n<p>12-megapixel camera</p>\r\n\r\n<p>Fingerprint resistant coating</p>\r\n\r\n<p>Antireflective coating</p>\r\n\r\n<p>Face Time video calling</p>\r\n', 'apple-10-5-ipad-pro-64-gb-space-grey-2017', 619, 'apple-10-5-ipad-pro-64-gb-space-grey-2017.jpg', '0000-00-00', 0),
-(8, 1, 'ASUS Transformer Mini T102HA 10.1\" 2 in 1 - Silver', '<p>Versatile Windows 10 device with keyboard and pen included, 2-in-1 functionality: use as both laptop and tablet.Update Windows periodically to ensure that your applications have the latest security settings.</p>\r\n\r\n<p>All day battery life, rated up to 11 hours of video playback; 128GB Solid State storage. Polymer Battery.With up to 11 hours between charges, you can be sure that Transformer Mini T102HA will be right there whenever you need it. You can charge T102HA via its micro USB port, so you can use a mobile charger or any power bank with a micro USB connector.</p>\r\n', 'asus-transformer-mini-t102ha-10-1-2-1-silver', 549.99, 'asus-transformer-mini-t102ha-10-1-2-1-silver.jpg', '0000-00-00', 0),
-(9, 2, 'PC SPECIALIST Vortex Core Lite Gaming PC', '<p>- Top performance for playing eSports and more&nbsp;<br />\r\n<br />\r\n- NVIDIA GeForce GTX graphics deliver smooth visuals&nbsp;<br />\r\n<br />\r\n- GeForce Experience delivers updates straight to your PC&nbsp;<br />\r\n<br />\r\nThe PC Specialist&nbsp;<strong>Vortex Core Lite&nbsp;</strong>is part of our Gaming range, bringing you the most impressive PCs available today. It has spectacular graphics and fast processing performance to suit the most exacting players.</p>\r\n', 'pc-specialist-vortex-core-lite-gaming-pc', 599.99, 'pc-specialist-vortex-core-lite-gaming-pc.jpg', '0000-00-00', 0),
-(10, 2, 'DELL Inspiron 5675 Gaming PC - Recon Blue', '<p>All-new gaming desktop featuring powerful AMD Ryzen&trade; processors, graphics ready for VR, LED lighting and a meticulous design for optimal cooling.</p>\r\n', 'dell-inspiron-5675-gaming-pc-recon-blue', 599.99, 'dell-inspiron-5675-gaming-pc-recon-blue.jpg', '2018-05-10', 1),
-(11, 2, 'HP Barebones OMEN X 900-099nn Gaming PC', '<p>What&#39;s inside matters.</p>\r\n\r\n<p>Without proper cooling, top tierperformance never reaches its fullpotential.</p>\r\n\r\n<p>Nine lighting zones accentuate theaggressive lines and smooth blackfinish of this unique galvanized steelcase.</p>\r\n', 'hp-barebones-omen-x-900-099nn-gaming-pc', 489.98, 'hp-barebones-omen-x-900-099nn-gaming-pc.jpg', '2018-05-12', 1),
-(12, 2, 'ACER Aspire GX-781 Gaming PC', '<p>- GTX 1050 graphics card lets you play huge games in great resolutions&nbsp;<br />\r\n<br />\r\n- Latest generation Core&trade; i5 processor can handle demanding media software&nbsp;<br />\r\n<br />\r\n- Superfast SSD storage lets you load programs in no time&nbsp;<br />\r\n<br />\r\nThe Acer&nbsp;<strong>Aspire&nbsp;GX-781 Gaming PC&nbsp;</strong>is part of our Gaming range, which offers the most powerful PCs available today. It has outstanding graphics and processing performance to suit the most demanding gamer.</p>\r\n', 'acer-aspire-gx-781-gaming-pc', 749.99, 'acer-aspire-gx-781-gaming-pc.jpg', '2018-05-12', 3),
-(13, 2, 'HP Pavilion Power 580-015na Gaming PC', '<p>Features the latest quad core Intel i5 processor and discrete graphics. With this power, you&rsquo;re ready to take on any activity from making digital art to conquering new worlds in VR.</p>\r\n\r\n<p>Choose the performance and storage you need. Boot up in seconds with to 128 GB SSD.</p>\r\n\r\n<p>Ditch the dull grey box, this desktop comes infused with style. A new angular bezel and bold green and black design give your workspace just the right amount of attitude.</p>\r\n\r\n<p>Up to 3 times faster performance - GeForce GTX 10-series graphics cards are powered by Pascal to deliver twice the performance of previous-generation graphics cards.</p>\r\n', 'hp-pavilion-power-580-015na-gaming-pc', 799.99, 'hp-pavilion-power-580-015na-gaming-pc.jpg', '2018-05-12', 1),
-(14, 2, 'LENOVO Legion Y520 Gaming PC', '<p>- Multi-task with ease thanks to Intel&reg; i5 processor&nbsp;<br />\r\n<br />\r\n- Prepare for battle with NVIDIA GeForce GTX graphics card&nbsp;<br />\r\n<br />\r\n- VR ready for the next-generation of immersive gaming and entertainment<br />\r\n<br />\r\n- Tool-less upgrade helps you personalise your system to your own demands&nbsp;<br />\r\n<br />\r\nPart of our Gaming range, which features the most powerful PCs available today, the Lenovo&nbsp;<strong>Legion Y520 Gaming PC</strong>&nbsp;has superior graphics and processing performance to suit the most demanding gamer.</p>\r\n', 'lenovo-legion-y520-gaming-pc', 899.99, 'lenovo-legion-y520-gaming-pc.jpg', '2018-05-10', 13),
-(15, 2, 'PC SPECIALIST Vortex Minerva XT-R Gaming PC', '<p>- NVIDIA GeForce GTX graphics for stunning gaming visuals<br />\r\n<br />\r\n- Made for eSports with a speedy 7th generation Intel&reg; Core&trade; i5 processor<br />\r\n<br />\r\n- GeForce technology lets you directly update drivers, record your gaming and more<br />\r\n<br />\r\nThe PC Specialist&nbsp;<strong>Vortex Minerva XT-R Gaming PC</strong>&nbsp;is part of our Gaming range, which offers the most powerful PCs available. Its high-performance graphics and processing are made to meet the needs of serious gamers.</p>\r\n', 'pc-specialist-vortex-minerva-xt-r-gaming-pc', 999.99, 'pc-specialist-vortex-minerva-xt-r-gaming-pc.jpg', '2018-05-10', 1),
-(16, 2, 'PC SPECIALIST Vortex Core II Gaming PC', '<p>Processor: Intel&reg; CoreTM i3-6100 Processor- Dual-core- 3.7 GHz- 3 MB cache</p>\r\n\r\n<p>Memory (RAM): 8 GB DDR4 HyperX, Storage: 1 TB HDD, 7200 rpm</p>\r\n\r\n<p>Graphics card: NVIDIA GeForce GTX 950 (2 GB GDDR5), Motherboard: ASUS H110M-R</p>\r\n\r\n<p>USB: USB 3.0 x 3- USB 2.0 x 5, Video interface: HDMI x 1- DisplayPort x 1- DVI x 2, Audio interface: 3.5 mm jack, Optical disc drive: DVD/RW, Expansion card slot PCIe: (x1) x 2</p>\r\n\r\n<p>Sound: 5.1 Surround Sound support PSU Corsair: VS350, 350W, Colour: Black- Green highlights, Box contents: PC Specialist Vortex Core- AC power cable</p>\r\n', 'pc-specialist-vortex-core-ii-gaming-pc', 649.99, 'pc-specialist-vortex-core-ii-gaming-pc.jpg', '2018-05-10', 2),
-(17, 3, 'AMAZON Fire 7 Tablet with Alexa (2017) - 8 GB, Black', '<p>The next generation of our best-selling Fire tablet ever - now thinner, lighter, and with longer battery life and an improved display. More durable than the latest iPad</p>\r\n\r\n<p>Beautiful 7&quot; IPS display with higher contrast and sharper text, a 1.3 GHz quad-core processor, and up to 8 hours of battery life. 8 or 16 GB of internal storage and a microSD slot for up to 256 GB of expandable storage.</p>\r\n', 'amazon-fire-7-tablet-alexa-2017-8-gb-black', 49.99, 'amazon-fire-7-tablet-alexa-2017-8-gb-black.jpg', '2018-05-12', 1),
-(18, 3, 'AMAZON Fire HD 8 Tablet with Alexa (2017) - 16 GB, Black', '<p>Take your personal assistant with you wherever you go with this Amazon Fire HD 8 tablet featuring Alexa voice-activated cloud service. The slim design of the tablet is easy to handle, and the ample 8-inch screen is ideal for work or play. This Amazon Fire HD 8 features super-sharp high-definition graphics for immersive streaming.</p>\r\n', 'amazon-fire-hd-8-tablet-alexa-2017-16-gb-black', 79.99, 'amazon-fire-hd-8-tablet-alexa-2017-16-gb-black.jpg', '2018-05-12', 2),
-(19, 3, 'AMAZON Fire HD 8 Tablet with Alexa (2017) - 32 GB, Black', '<p>The next generation of our best-reviewed Fire tablet, with up to 12 hours of battery life, a vibrant 8&quot; HD display, a 1.3 GHz quad-core processor, 1.5 GB of RAM, and Dolby Audio. More durable than the latest iPad.</p>\r\n\r\n<p>16 or 32 GB of internal storage and a microSD slot for up to 256 GB of expandable storage.</p>\r\n', 'amazon-fire-hd-8-tablet-alexa-2017-32-gb-black', 99.99, 'amazon-fire-hd-8-tablet-alexa-2017-32-gb-black.jpg', '2018-05-10', 1),
-(20, 3, 'APPLE 9.7\" iPad - 32 GB, Space Grey', '<p>9.7-inch Retina display, wide color and true tone</p>\r\n\r\n<p>A9 third-generation chip with 64-bit architecture</p>\r\n\r\n<p>M9 motion coprocessor</p>\r\n\r\n<p>1.2MP FaceTime HD camera</p>\r\n\r\n<p>8MP iSight camera</p>\r\n\r\n<p>Touch ID</p>\r\n\r\n<p>Apple Pay</p>\r\n', 'apple-9-7-ipad-32-gb-space-grey', 339, 'apple-9-7-ipad-32-gb-space-grey.jpg', '2018-05-12', 1);
+(27, 1, 'Lipeno C4 Dinurado Rice - 25KG', '<p><strong>Dinorado special rice</strong> is a 100% Philippine rice type with a natural fragrant scent, white long grain, smooth, shiny, and silky appearance. It has a pleasant and fragrant scent when cooked. Dinorado rice is soft, slightly sticky, and chewy when cooked.</p>\r\n\r\n<p><strong>Dinorado </strong>rice can be consumed plain, fried, in paella, or in any other rice dish.</p>\r\n\r\n<p><strong>Dinorado</strong>, on the other hand, is a touch stickier than Sinandomeng. Dinorado Rice has a stronger aroma than Sinandomeng Rice, but not as strong as Jasmine Rice. Dinorado is excellent for congee and everyday rice. The most common rice variety for everyday meals is Sinandomeng.</p>\r\n', 'lipeno-c4-dinurado-rice-25kg', 1100, 'lipeno-c4-dinurado-rice-25kg.png', '2022-05-05', 1),
+(28, 1, 'Lipeno Whole Grain Sinandomeng Rice - 25KG', '<p>Freshly milled and made entirely in the Philippines. It&#39;s made entirely of whole grains and has a natural aromatic scent.</p>\r\n\r\n<p>Long white grains with a smooth, lustrous, and silky look.</p>\r\n\r\n<p>When it comes to freshly milled white rice, it&#39;s recommended to eat it within 1-3 months of the milling date.</p>\r\n', 'lipeno-whole-grain-sinandomeng-rice-25kg', 1000, 'lipeno-whole-grain-sinandomeng-rice-25kg.png', '0000-00-00', 0),
+(29, 1, 'Coco Pandan Premium Rice - 25KG', '<p><strong>Coco Pandan Premium Rice</strong> contains long grains and is fragrant. It has a soft, silky, and sticky texture when cooked. It has a very white appearance and retains its smell even after cooking. Even at room temperature, it maintains its quality. It&#39;s ideal for everyday use and consumption.</p>\r\n', 'coco-pandan-premium-rice-25kg', 1100, 'coco-pandan-premium-rice-25kg.png', '2022-05-05', 2),
+(30, 1, 'Sweet Jasmine Rice - 25KG', '<p>The aroma of<strong> Sweet Jasmine Rice</strong> is floral, and the texture is smooth and sweet. Originally from Thailand, the rice is now farmed in Laos, Southern Vietnam, and Cambodia. It&#39;s also known as Thai fragrant rice or Thai Hom Mali rice, and it&#39;s popular all over the world.</p>\r\n', 'sweet-jasmine-rice-25kg', 1100, 'sweet-jasmine-rice-25kg.png', '0000-00-00', 0),
+(31, 1, 'Maharlika Rice - 25KG', '<p>One of the top-selling rice is <strong>Maharlika special rice</strong>, which is also one of the greatest foods in the Philippines. It&#39;s ideal for any time of day when cooked, with a pleasant smell, a highly white appearance, and a savory taste. Fluffy, &quot;Maalsa&quot;-style, and delectable.</p>\r\n', 'maharlika-rice-25kg', 1250, 'maharlika-rice-25kg.png', '0000-00-00', 0),
+(32, 1, 'Denorado Mindoro Rice - 25KG', '<p><strong>Denorado Mindoro Rice</strong> is a 100% Philippine rice type known for its natural fragrant aroma, white long grain, smooth, shiny, and silky appearance. It has a pleasant and fragrant scent when cooked. Denorado rice is soft, slightly sticky, and chewy when cooked.</p>\r\n', 'denorado-mindoro-rice-25kg', 1150, 'denorado-mindoro-rice-25kg.png', '2022-05-05', 13),
+(33, 1, 'Super Angelica Rice - 25KG', '<p>Created to provide just the best taste to any dish you desire to match it with, as it is grown on the best paddy terraces, with constant rains and fresh cool air. Rice is the finest choice for your special dinners because of its smooth taste, aromatic perfume, and imported quality.</p>\r\n', 'super-angelica-rice-25kg', 1150, 'super-angelica-rice-25kg.png', '0000-00-00', 0),
+(34, 1, 'Cagayan C-18 Rice - 25KG', '<p><strong>Cagayan&#39;s Well Milled Rice</strong> is prepared from 100% native palay harvested from the island of Cagayan. Stocks were transported directly from Tuguegarao City&#39;s rice mill.</p>\r\n', 'cagayan-c-18-rice-25kg', 1150, 'cagayan-c-18-rice-25kg.png', '0000-00-00', 0),
+(35, 3, 'Dona Maria Jasponica Brown Rice - 5KG', '<p><strong>Dona Maria</strong> helps you get active while enjoying the aromatic nutty and chewy texture of its <strong>Jasponica Brown type</strong>, which is rich in minerals such as Fiber, Magnesium, Selenium, Vitamin B1, B3, and B6.</p>\r\n\r\n<p>The aroma of Jasmine rice is enticing, and the quality of Japanese rice is excellent.</p>\r\n\r\n<p>&nbsp;</p>\r\n', 'dona-maria-jasponica-brown-rice-5kg', 450, 'dona-maria-jasponica-brown-rice-5kg.png', '2022-05-05', 1),
+(36, 3, 'Harvester’s Brown Rice - 5KG', '<p><strong>Harvester&#39;s Brown Rice</strong> is unpolished rice that is both healthy and nutritious. Dietary fiber, B vitamins, minerals, essential oils, antioxidants, and selenium are all abundant in the undamaged bran layer. Regular use of unpolished rice as part of a healthy diet and lifestyle has been linked to the prevention of various gastrointestinal and cardiovascular disorders. This rice is a superfood with a chewy texture and nutty flavor.</p>\r\n', 'harvester-s-brown-rice-5kg', 350, 'harvester-s-brown-rice-5kg.png', '0000-00-00', 0),
+(37, 3, 'Dona Maria Miponica Brown Rice - 10KG', '<p>Rich in nutrients such as Fiber, Magnesium, Selenium, Vitamin B1, B3, and B6, Do&ntilde;a Maria helps you become fit while enjoying the aromatic nutty, and chewy texture of its Jasponica Brown variety.</p>\r\n', 'dona-maria-miponica-brown-rice-10kg', 450, 'dona-maria-miponica-brown-rice-10kg.png', '0000-00-00', 0),
+(38, 3, 'Healthy Alternatives Organic Brown Rice - 2KG', '<p>This pesticide-free, all-natural healthy alternative is gathered naturally from upland rice terraces. Only the husk has been removed from indigenous rice. The bran is whole and full of fiber, minerals, and vitamin B.</p>\r\n', 'healthy-alternatives-organic-brown-rice-2kg', 390, 'healthy-alternatives-organic-brown-rice-2kg.png', '0000-00-00', 0),
+(39, 2, 'Harvester’s Black Rice - 5KG', '<p>Antioxidants, vitamins, and fiber abound in black rice. Replace white rice with black rice to improve blood sugar control.</p>\r\n\r\n<p>And, best of all, it tastes fantastic!</p>\r\n', 'harvester-s-black-rice-5kg', 550, 'harvester-s-black-rice-5kg.png', '2022-05-06', 1),
+(40, 2, 'Jordan Farm Black Rice - 5KG', '<p><strong>Jordan Farms Black Rice</strong> is a great way to eat healthy. Black rice is high in antioxidants, fiber, vitamin B, essential oils, minerals, and iron, as well as having a low glycemic index.</p>\r\n', 'jordan-farm-black-rice-5kg', 640, 'jordan-farm-black-rice-5kg.png', '0000-00-00', 0),
+(41, 2, 'Healthy Alternative’s Black Rice - 5KG', '<p>This pesticide-free, all-natural healthy alternative is gathered naturally from upland rice terraces. Only the husk has been removed from indigenous rice. The bran is whole and full of fiber, minerals, and vitamin B.</p>\r\n\r\n<p>Please consume within 3 months after the manufacturing date to guarantee freshness.</p>\r\n', 'healthy-alternative-s-black-rice-5kg', 540, 'healthy-alternative-s-black-rice-5kg.png', '0000-00-00', 0),
+(42, 2, 'Prime Emperor’s Organic Black Rice - 2KG', '<p><strong>Black rice</strong>, often known as &quot;forbidden rice&quot; or &quot;emperor&#39;s rice,&quot; is a type of rice that was once only available to the Emperor of China. At the period, black rice was thought to have supernatural properties that helped the Emperor live a long and healthy life.</p>\r\n', 'prime-emperor-s-organic-black-rice-2kg', 750, 'prime-emperor-s-organic-black-rice-2kg.png', '0000-00-00', 0),
+(43, 4, 'Jordan Farms Red Rice -  2KG', '<p><strong>Jordan Farms Red rice</strong> is a great way to live a healthier life. It&#39;s high in fiber and high in manganese and zinc, both of which may aid speed up metabolism. The Glycemic index is lower. Beneficial to the bones.</p>\r\n', 'jordan-farms-red-rice-2kg', 480, 'jordan-farms-red-rice-2kg.png', '2022-05-05', 1),
+(44, 4, 'Harvester’s Whole Grain Red Rice - 5KG', '<p>Harvester&#39;s Red Rice is a fantastic method to stay in shape and live a healthier lifestyle.</p>\r\n', 'harvester-s-whole-grain-red-rice-5kg', 435, 'harvester-s-whole-grain-red-rice-5kg.png', '2022-05-05', 1),
+(45, 4, 'Prime Organic’s Unpolished Red Rice - 5KG', '<p>It has a lot of fiber and has a low sugar level, which is beneficial for diabetics. Because of the presence of anthocyanins, which are known to protect against lethal chronic diseases, unpolished rice is high in antioxidants. When we polish rice, we remove 15 percent of the protein, 85 percent of the fat, 90 percent of the calcium, and 75 percent of the phosphorus.</p>\r\n', 'prime-organic-s-unpolished-red-rice-5kg', 780, 'prime-organic-s-unpolished-red-rice.png', '0000-00-00', 0),
+(46, 4, 'F&C (Farm & Cottages) High Fiber Red Rice - 5KG', '<p>A premium whole grain rice with excellent purity, good eating quality, and no fertilizers or dangerous chemical pesticides used in its production. Traditional rice types produce healthy red rice, which is sown and harvested using only natural and safe organic resources. Premium quality means healthier and safer food products for your whole family with Healthy Red Rice.</p>\r\n', 'f-c-farm-cottages-high-fiber-red-rice-5kg', 800, 'f-c-farm-cottages-high-fiber-red-rice.png', '0000-00-00', 0),
+(47, 5, 'Earthly Choice Cauliflower Rice - 1KG', '<p>Rice is one of our favorite grains, but it has a lot of carbs for certain people. Our <strong>Cauliflower Rice</strong> is a low-carb alternative that provides plenty of nutrients without sacrificing flavor or variety. Simply microwave this shelf-stable bag for 90 seconds and enjoy.&nbsp; Cauliflower rice is better for you because it&#39;s Paleo and Keto friendly, with only 30mg of sodium and 5 grams of carbohydrates.</p>\r\n', 'earthly-choice-cauliflower-rice-1kg', 1000, 'earthly-choice-cauliflower-rice-1kg.png', '0000-00-00', 0),
+(48, 5, 'Belle’s Organic Quinoa Rice - 1KG', '<p>Fiber and protein are abundant in this dish. It&#39;s a complete protein, meaning it contains all of the necessary amino acids. Quinoa offers a lot of protein for such a little seed: one cup cooked has 8 grams. Quinoa is naturally gluten-free, therefore it may aid with weight loss. The Glycemic index is low.</p>\r\n', 'belle-s-organic-quinoa-rice-1kg', 470, 'belle-s-organic-quinoa-rice-1kg.png', '0000-00-00', 0),
+(49, 5, 'Belle’s Organic Tricolor Quinoa Rice - 1KG', '<p>The sweet, savory, and slightly nutty flavors of each seed come together in this blend of white, red, and black quinoa. They make an excellent substitute for taco meat or a whole grain addition to your favorite salad when combined. This ancient grain also provides all nine essential amino acids, as well as protein, iron, and fiber.</p>\r\n', 'belle-s-organic-tricolor-quinoa-rice-1kg', 520, 'belle-s-organic-tricolor-quinoa-rice-1kg.png', '0000-00-00', 0),
+(50, 5, 'Jordan Farms Adlai Rice - 1KG', '<p>Jordan Farms Adlai is a nutrient-dense, lesser-known grain that can be used in place of rice! This gluten-free superfood, also known as Job&#39;s Tears or Chinese Pearl Barley, is also low-glycemic, making it a perfect, healthy carbohydrate option for anyone trying to control their blood glucose levels. It&#39;s a staple food that&#39;s high in dietary fiber, protein, and minerals like calcium, phosphorus, iron, niacin, riboflavin, and thiamine.</p>\r\n', 'jordan-farms-adlai-rice-1kg', 300, 'jordan-farms-adlai-rice.png', '2022-05-05', 1);
 
 -- --------------------------------------------------------
 
@@ -143,17 +146,23 @@ INSERT INTO `products` (`id`, `category_id`, `name`, `description`, `slug`, `pri
 CREATE TABLE `sales` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `pay_id` varchar(50) NOT NULL,
-  `sales_date` date NOT NULL
+  `OrderPaid` bit(1) NOT NULL DEFAULT b'0',
+  `sales_date` date NOT NULL,
+  `PaymentMethod` varchar(20) NOT NULL,
+  `Email` varchar(100) NOT NULL,
+  `OrderAddress` varchar(200) NOT NULL,
+  `Contact` int(11) NOT NULL,
+  `OrderStatus` varchar(100) NOT NULL DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sales`
 --
 
-INSERT INTO `sales` (`id`, `user_id`, `pay_id`, `sales_date`) VALUES
-(9, 9, 'PAY-1RT494832H294925RLLZ7TZA', '2018-05-10'),
-(10, 9, 'PAY-21700797GV667562HLLZ7ZVY', '2018-05-10');
+INSERT INTO `sales` (`id`, `user_id`, `OrderPaid`, `sales_date`, `PaymentMethod`, `Email`, `OrderAddress`, `Contact`, `OrderStatus`) VALUES
+(29, 20, b'0', '2022-05-05', 'GCASH', 'erinnesagmit@gmail.com', 'Batangas City', 936526761, 'Complete'),
+(40, 20, b'0', '2022-05-05', 'GCASH', 'erinnesagmit@gmail.com', 'Batangas City', 936526761, 'Pending'),
+(41, 20, b'0', '2022-05-06', 'GCASH', 'erinnesagmit@gmail.com', 'Batangas City', 936526761, 'Pending');
 
 -- --------------------------------------------------------
 
@@ -182,7 +191,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `type`, `firstname`, `lastname`, `address`, `contact_info`, `photo`, `status`, `activate_code`, `reset_code`, `created_on`) VALUES
-(1, 'admin@admin.com', '$2y$10$8wY63GX/y9Bq780GBMpxCesV9n1H6WyCqcA2hNy2uhC59hEnOpNaS', 1, 'Lyndon', 'Bermoy', '', '', 'profile youtube1.jpg', 1, '', '', '2018-05-01');
+(1, 'admin@admin.com', '$2y$10$8wY63GX/y9Bq780GBMpxCesV9n1H6WyCqcA2hNy2uhC59hEnOpNaS', 1, 'Admin', 'Jessie', '', '09182738449', 'profile.jpg', 1, '', '', '2022-04-01'),
+(16, 'gultebako123@gmail.com', '$2y$10$oRXJr.HaBykgEGhANzWH2uoEc4YsTVMIz/f4tMExPqsN0gw2nQ01m', 0, 'Jessie Jhon', 'Yacap', '', '', '', 1, 'U6pqhVldYcGN', '', '2022-05-01'),
+(19, 'gultebako1234@gmail.com', '$2y$10$T9kk9yVNQGKAWYJtzd5YKeWVyfykyYN09uuw/ibDE8tGPLYSmz.He', 0, 'Jessie Jhon', 'Yacap', '', '', '', 1, 'DUETHayutfQb', '', '2022-05-01'),
+(20, 'erinnesagmit@gmail.com', '$2y$10$CQg87jSL9yBv7zD5BQ1DZOZWYMquGvdrgVRJMc722VbF8ipZE4Che', 0, 'Erinne', 'Sagmit', 'Batangas City', '0936526761', '', 1, 'F2e5WhNJEoRC', '', '2022-05-05');
 
 --
 -- Indexes for dumped tables
@@ -232,37 +244,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `details`
 --
 ALTER TABLE `details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
