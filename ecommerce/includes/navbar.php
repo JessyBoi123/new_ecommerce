@@ -1,8 +1,8 @@
 <header class="main-header">
-  <nav class="navbar navbar-static-top" style="background-color: #24363E;">
+  <nav class="navbar navbar-static-top" style="background-color: #000024;">
     <div class="container">
       <div class="navbar-header">
-        <div href="index.php" class="navbar-brand  p-0" style="height: 52px"> <img href="index.php" class="pb-1" style="max-width:100%; max-height:100%" src="images/Logo4.png" ></div>
+        <div class="navbar-brand  p-0" style="height: 52px"><a href="index.php"><img href="index.php" class="pb-1" style="max-width:100%; max-height:100%" src="images/Logo4.png" ></a></div>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
           <i class="fa fa-bars"></i>
         </button>

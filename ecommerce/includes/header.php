@@ -38,11 +38,14 @@
     <style type="text/css">
 
     body {
-        background-color: #f0f0f2;
+        background-color: #0D1117;
         margin: 0;
         padding: 0;
         font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        
+    }
+
+    .margin-bottom-for-search {
+      margin-bottom: 25px;
     }
 
     /* Small devices (tablets, 768px and up) */

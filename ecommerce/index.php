@@ -3,30 +3,29 @@
 <body class="hold-transition skin-blue layout-top-nav">
 <div class="wrapper">
 
-	<?php include 'includes/navbar.php'; ?>
+<?php include 'includes/navbar.php'; ?>
 	 
-	  <div class="content-wrapper">
-	    <div class="container">
+	<div class="content-wrapper">
+	    <div class="container-fluid margin-bottom-for-search" style="background-color: #000024;">
 
 
 	      <!-- Main content -->
 	      <section class="content">
-	        <div class="container">
+	        <div class="container" >
 	        	<div class="col-sm-12">
 					<div class="text-center">
 						<img src="images/Logo4.png" alt="Rice Next Door Logo">
-						<p>We specialize in selling quality products.</p> 
+						<p style="color: #fff;">We specialize in selling quality products.</p> 
 
 							<form method="POST" class="" action="search.php">
 								<div class="form-group">
 									<input type="text" class="form-control " name="keyword" placeholder="Search for Product" required>
-									<small class="form-text text-muted">If you remember keywords, type here.</small>
+									<small class="form-text" style="color: #fff;">If you remember keywords, type here.</small>
 								</div>
 							</form>
       				</div>
 				</div>
 			</div>
-			
 		</div>
 			
 
