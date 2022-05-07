@@ -8,6 +8,24 @@
 	  <div class="content-wrapper">
 	    <div class="container">
 
+			<!-- Main content -->
+			<section class="content">
+	        <div class="container">
+	        	<div class="col-sm-12">
+					<div class="text-center">
+						<img src="images/Logo4.png" alt="Rice Next Door Logo">
+						<p>We specialize in selling quality products.</p> 
+
+							<form method="POST" class="" action="search.php">
+								<div class="form-group">
+									<input type="text" class="form-control " name="keyword" placeholder="Search for Product" required>
+									<small class="form-text text-muted">If you remember keywords, type here.</small>
+								</div>
+							</form>
+      				</div>
+				</div>
+			</div>
+
 	      <!-- Main content -->
 	      <section class="content">
 	        <div class="row">
