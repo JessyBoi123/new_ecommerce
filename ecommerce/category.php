@@ -49,7 +49,10 @@
 	       								<div class='box box-solid'>
 		       								<div class='box-body prod-body'>
 		       									<img src='".$image."' width='100%' height='230px' class='thumbnail'>
-		       									<h5><a href='product.php?product=".$row['slug']."'>".$row['name']."</a></h5>
+		       									<h5><a href='product.php?product=".$row['slug']."'>".$row['name']."</a>
+												   <br/><a>Remaining Stock ".$row['RemainingStock']."</a>  
+												   </h5>
+												
 		       								</div>
 		       								<div class='box-footer'>
 		       									<b>PHP ".number_format($row['price'], 2)."</b>

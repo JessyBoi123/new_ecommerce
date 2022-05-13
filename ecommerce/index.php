@@ -10,12 +10,12 @@
 
 
 	      <!-- Main content -->
-	      <section class="content">
+	      <section class="">
 	        <div class="container" >
 	        	<div class="col-sm-12">
 					<div class="text-center">
-						<img src="images/Logo4.png" alt="Rice Next Door Logo">
-						<p style="color: #fff;">We specialize in selling quality products.</p> 
+						<!-- <img src="images/Logo4.png" alt="Rice Next Door Logo">
+						<p style="color: #fff;">We specialize in selling quality products.</p>  -->
 
 							<form method="POST" class="" action="search.php">
 								<div class="form-group">
@@ -28,7 +28,7 @@
 			</div>
 		</div>
 			
-
+	
 
 	        		<?php
 	        			if(isset($_SESSION['error'])){
@@ -38,6 +38,14 @@
 	        					</div>
 	        				";
 	        				unset($_SESSION['error']);
+	        			}
+						if(isset($_SESSION['success'])){
+	        				echo "
+	        					<div class='alert alert-success'>
+	        						".$_SESSION['success']."
+	        					</div>
+	        				";
+	        				unset($_SESSION['success']);
 	        			}
 	        		?>
 	        		<div id="carousel-example-generic" class="carousel slide container" data-ride="carousel">

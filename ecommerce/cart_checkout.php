@@ -35,28 +35,38 @@ if (isset($_POST['saveCart'])) {
 
         $salesid = $conn->lastInsertId();
 
-             $_SESSION['success'] = 'Order is now for payment';
+  
 
              try {
-            $stmt = $conn->prepare("SELECT * FROM cart LEFT JOIN products ON products.id=cart.product_id WHERE user_id=:user_id");
+            $stmt = $conn->prepare("SELECT * , products.id as prdID , products.name as ProductNames , (products.price*quantity) as subtotal   FROM cart LEFT JOIN products ON products.id=cart.product_id WHERE user_id=:user_id");
             $stmt->execute(['user_id' => $user['id']]);
 
+            $ITEMSCART ="<p>";
+
+            $Totals =0;
+
             foreach ($stmt as $row) {
+
                 $stmt = $conn->prepare("INSERT INTO details (sales_id, product_id, quantity) VALUES (:sales_id, :product_id, :quantity)");
                 $stmt->execute(['sales_id' => $salesid, 'product_id' => $row['product_id'], 'quantity' => $row['quantity']]);
-            }
 
+                $total= $row['RemainingStock'] - $row['quantity'];
+
+                $stmt = $conn->prepare("UPDATE products  SET RemainingStock = :RemainingStock where id=:product_id");
+                $stmt->execute(['RemainingStock' => $total, 'product_id' => $row['prdID'] ]);
+                $Totals += $row['subtotal'];
+           
+                $ITEMSCART = $ITEMSCART . "<a>".$row['ProductNames']." x ".$row['quantity']." = PHP ".$row['subtotal']." <a/><br/>";
+            }
+            $ITEMSCART = $ITEMSCART  ."<p/>";
             $stmt = $conn->prepare("DELETE FROM cart WHERE user_id=:user_id");
             $stmt->execute(['user_id' => $user['id']]);
 
-            $_SESSION['success'] = 'Transaction successful. Thank you.';
-
-            
-    
-        $name = "Arjie Test [SMPT]";  // Name of your website or yours
-        $to = "tester.emailer10@gmail.com";  // mail of reciever
-        $subject = "Jessie tutawsan lang";
-        $body = "Sending Email Test - If success integrate the code to Jessie's project.";
+        
+        $name = "Rice Next Door";  // Name of your website or yours
+        $to =  $_POST['Email'];  // mail of reciever
+        $subject = "Order confirmation";
+        $body = "Summary of orders.<br/>". "Payment Method:".$_POST['paymentmethod']." <br/>" . $ITEMSCART ."Total: PHP ".   $Totals;
         $from = "tester.emailer10@gmail.com";  // you mail
         $password = "testermail01";  // your mail password
 
@@ -97,7 +107,9 @@ if (isset($_POST['saveCart'])) {
         } else {
             echo "Something is wrong: <br><br>" . $mail->ErrorInfo;
         } 
-    
+
+        
+        $_SESSION['success'] = 'Transaction successful';
 
         } catch (PDOException $e) {
             $_SESSION['error'] = $e->getMessage();

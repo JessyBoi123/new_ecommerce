@@ -57,7 +57,15 @@
                   <div class="col-sm-5">
                     <input type="text" class="form-control" id="edit_price" name="price">
                   </div>
+             
+                  <label for="edit_stock" class="col-sm-1 control-label">Stock</label>
+
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" id="edit_stock" name="stock">
+                  </div>
                 </div>
+
+
                 <p><b>Description</b></p>
                 <div class="form-group">
                   <div class="col-sm-12">
@@ -65,6 +73,7 @@
                   </div>
                   
                 </div>
+       
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>

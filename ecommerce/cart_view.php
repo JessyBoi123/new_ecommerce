@@ -131,7 +131,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-					<button type="submit" class="btn btn-primary btn-flat" name="saveCart"><i class="fa fa-save"></i> Confirm</button>
+					<button type="submit" class="btn btn-primary btn-flat" name="saveCart" id="savemodal"><i class="fa fa-save"></i> Confirm</button>
 					</form>
 				</div>
 			</div>
@@ -141,6 +141,7 @@
 
 	<?php include 'includes/scripts.php'; ?>
 	<script>
+
 		var total = 0;
 		$(function() {
 			$(document).on('click', '.checkout', function(e) {

@@ -91,6 +91,7 @@
                   <th>Description</th>
                   <th>Price</th>
                   <th>Views Today</th>
+                  <th>Remaining Stock</th>
                   <th>Tools</th>
                 </thead>
                 <tbody>
@@ -114,6 +115,7 @@
                             <td><a href='#description' data-toggle='modal' class='btn btn-info btn-sm btn-flat desc' data-id='".$row['id']."'><i class='fa fa-search'></i> View</a></td>
                             <td>PHP ".number_format($row['price'], 2)."</td>
                             <td>".$counter."</td>
+                            <td>".$row['RemainingStock']."</td>
                             <td>
                               <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
                               <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
@@ -211,6 +213,7 @@ function getRow(id){
       $('#edit_name').val(response.prodname);
       $('#catselected').val(response.category_id).html(response.catname);
       $('#edit_price').val(response.price);
+      $('#edit_stock').val(response.RemainingStock);
       CKEDITOR.instances["editor2"].setData(response.description);
       getCategory();
     }
